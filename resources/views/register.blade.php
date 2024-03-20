@@ -15,10 +15,16 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title text-center">Sign Up</h2>
-                        <form>
+                        @if(Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        {{ Session::get('success') }}
+                      </div>
+                    @endif
+                        <form action="{{ route('register') }}" method="POST">
+                            @csrf
                             <div class="mb-3">
                                 <label for="username" class="form-label">Name</label>
-                                <input type="text" class="form-control" id="username" name="username" required>
+                                <input type="text" class="form-control" id="username" name="name" required>
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email address</label>

@@ -25,7 +25,13 @@
             <div class="row justify-content-center">
                 <div class="col-md-4">
                     <main class="form-signin w-100 m-auto">
-                        <form>
+                        @if(Session::has('error'))
+                    <div class="alert alert-danger" role="alert">
+                        {{ Session::get('error') }}
+                      </div>
+                    @endif
+                        <form action="{{ route('login') }}" method="POST">
+                            @csrf
                             <img class="mb-4" src="{{ asset('images/Seamolec.png') }}" alt="" width="72"
                                 height="72">
                             <h1 class="h3 mb-3 fw-normal"></h1>
@@ -37,7 +43,7 @@
                             </div>
 
                             <div class="form-floating mt-2">
-                                <input type="password" class="form-control" id="floatingPassword"
+                                <input type="password" name="password" class="form-control" id="password"
                                     placeholder="Password">
                                 <label for="floatingPassword">Password</label>
 
