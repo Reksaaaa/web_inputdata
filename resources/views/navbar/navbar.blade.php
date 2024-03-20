@@ -30,7 +30,7 @@
     <div class="sidebar-footer">
         <a href="/login" class="sidebar-link">
             <i class="bi bi-box-arrow-in-right"></i>
-            <span>Logout</span>
+            <button type="submit">Logout</button>
         </a>
     </div>
 </aside>
