@@ -27,10 +27,13 @@
             </a>
         </li>
     </ul>
-    <div class="sidebar-footer">
+    <div class="sidebar-footer">type
         <a href="/login" class="sidebar-link">
             <i class="bi bi-box-arrow-in-right"></i>
-            <button type="submit">Logout</button>
+            <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
+                @csrf
+                @method('DELETE')
+            <span><button type="submit">Logout</button></span>
         </a>
     </div>
 </aside>
