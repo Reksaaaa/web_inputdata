@@ -15,7 +15,14 @@
                 <div class="card">
                     <div class="card-body">
                         <h2 class="card-title text-center">Sign In</h2>
-                        <form action="" method="POST">
+                        <div class="card-body">
+                            @if(Session::has('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ Session::get('error') }}
+                              </div>
+                            @endif
+                        <form action="{{ route('login') }}" method="POST">
+                            @csrf
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" required>
@@ -30,7 +37,7 @@
                             </div>
                         </form>
                         <div class="text-center mt-3">
-                            Don't have an account yet? <a href="#">Register</a>
+                            Don't have an account yet? <a href="/register">Register</a>
                         </div>
                     </div>
                 </div>

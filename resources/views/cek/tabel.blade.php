@@ -27,7 +27,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">NO.</th>
                     <th scope="col">Nama Perangkat</th>
                     <th scope="col">Tipe Perangkat</th>
                     <th scope="col">SSID</th>
@@ -41,17 +41,18 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>RMK01</td>
-                    <td>Mikrotik</td>
-                    <td>lorem</td>
-                    <td>lorem</td>
-                    <td>lorem</td>
-                    <td>lorem</td>
-                    <td>lorem</td>
-                    <td>lorem</td>
-                    <td>Keterangan</td>
+                @foreach ($cek as $c)
+                    <tr>
+                    <th scope="row">{{ $c->id }}</th>
+                    <td>{{ $c->nama }}</td>
+                    <td>{{ $c->tipe_perangkat }}</td>
+                    <td>{{ $c->ssid }}</td>
+                    <td>{{ $c->ruangan }}</td>
+                    <td>{{ $c->divisi }}</td>
+                    <td>{{ $c->status }}</td>
+                    <td>{{ $c->upload }}</td>
+                    <td>{{ $c->download }}</td>
+                    <td>{{ $c->keterangan }}</td>
                     <td>
 
                         {{-- Edit --}}
@@ -62,28 +63,8 @@
                                     class="bi bi-trash3"></i></button></a>
                     </td>
                 </tr>
-
-                <tr>
-                    <th scope="row">2</th>
-                    <td>RMK01</td>
-                    <td>Mikrotik</td>
-                    <td>lorem</td>
-                    <td>lorem</td>
-                    <td>lorem</td>
-                    <td>lorem</td>
-                    <td>lorem</td>
-                    <td>lorem</td>
-                    <td>Keterangan</td>
-                    <td>
-
-                        {{-- Edit --}}
-                        <a href="/data"><button type="button" class="btn btn-warning"><i
-                                    class="bi bi-pencil-fill"></i></button> </a>
-                        {{-- Delete --}}
-                        <a href="/"><button type="button" class="btn btn-warning"><i
-                                    class="bi bi-trash3"></i></button></a>
-                    </td>
-                </tr>
+                @endforeach
+                
             </tbody>
         </table>
     </div>

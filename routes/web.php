@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CekController;
+use App\Http\Controllers\InputController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,20 +23,25 @@ Route::group(['middleware' => 'guest'], function() {
     Route::post('/login', [AuthController::class, 'loginPost'])->name('login');
 });
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/home', [CekController::class, 'index']);
+    Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+
 Route::get('/home', function () {
     return view('home');
 });
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/cek', function() {
+    return 'test';
 });
+
+Route::get('/cek', [CekController::class, 'tabel']);
+Route::get('/cek/create', [CekController::class, 'create']);
+Route::post('/cek/hasil', [CekController::class, 'hasil']);
 
 Route::get('/input', function () {
     return view('input');
-});
-
-Route::get('/tabel', function () {
-    return view('tabel');
 });
 
 Route::get('/cetak', function () {
