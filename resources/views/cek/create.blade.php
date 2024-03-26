@@ -53,6 +53,5 @@
                 <button class="btn btn-primary" type="submmit" name="submit" value="Save">Simpan</button>
             </div>
         </div>
-
     </form>
 @endsection
