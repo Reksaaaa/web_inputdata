@@ -56,11 +56,15 @@
                     <td>
 
                         {{-- Edit --}}
-                        <a href="/data"><button type="button" class="btn btn-warning"><i
+                        <a href="/cek/{{ $c->id }}/edit"><button type="button" class="btn btn-warning"><i
                                     class="bi bi-pencil-fill"></i></button> </a>
                         {{-- Delete --}}
-                        <a href="/"><button type="button" class="btn btn-warning"><i
-                                    class="bi bi-trash3"></i></button></a>
+                        <form action="/cek/{{ $c->id }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <a href="/" type="submit"><button type="submit" value="Delete" class="btn btn-warning"><i
+                                class="bi bi-trash3"></i></button></a>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

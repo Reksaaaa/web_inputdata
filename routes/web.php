@@ -32,17 +32,13 @@ Route::get('/home', function () {
     return view('home');
 });
 
-Route::get('/cek', function() {
-    return 'test';
-});
-
 Route::get('/cek', [CekController::class, 'tabel']);
 Route::get('/cek/create', [CekController::class, 'create']);
 Route::post('/cek/hasil', [CekController::class, 'hasil']);
+Route::get('/cek/{id}/edit', [CekController::class, 'edit']);
+Route::put('/cek/{id}', [CekController::class, 'update']);
+Route::delete('/cek/{id}', [CekController::class, 'destroy']);
 
-Route::get('/input', function () {
-    return view('input');
-});
 
 Route::get('/cetak', function () {
     return view('cetak');
