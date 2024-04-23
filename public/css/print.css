@@ -1,0 +1,5 @@
+@media print {
+    .btn-group {
+        display: none; /* Sembunyikan tombol aksi saat mencetak */
+    }
+}

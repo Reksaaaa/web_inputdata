@@ -42,7 +42,7 @@ body {
     min-width: 70px;
     z-index: 1000;
     transition: all 0.25s ease-in-out;
-    background-color: #0e2238;
+    background-color: #b02a37;
     display: flex;
     flex-direction: column;
     /* background-color: red; */
@@ -155,6 +155,15 @@ a.sidebar-link:hover {
 table {
     width: 100%;
     border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    text-align: between; /* Mengatur teks di sel-sel tabel ke tengah */
+}
+
+.table-sm thead th {
+    font-size: 15px; /* Sesuaikan ukuran font yang diinginkan */
 }
 
 th,
