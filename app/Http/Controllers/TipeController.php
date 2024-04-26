@@ -8,25 +8,32 @@ use Illuminate\Validation\Rule;
 
 class TipeController extends Controller
 {
-    public function index(Request $request)
-    {
-        $keyword = $request->input('keyword');
-
-        $query = Tipe::query();
-
-        if ($keyword) {
-            $query->where('nama_tipe', 'LIKE', "%$keyword%");
-        }
-
-        $data['tipe'] = $query->paginate(5)->appends(['keyword' => $keyword]);
-
-        return view('tipe.info_tipe', $data);
+    public function index() {
+        return view('tipe.info_tipe');
     }
+    // public function index(Request $request)
+    // {
+    //     $keyword = $request->input('keyword');
+
+    //     $query = Tipe::query();
+
+    //     if ($keyword) {
+    //         $query->where('nama_tipe', 'LIKE', "%$keyword%");
+    //     }
+
+    //     $data['tipe'] = $query->paginate(5)->appends(['keyword' => $keyword]);
+
+    //     return view('tipe.info_tipe', $data);
+    // }
 
     public function create() {
-        $data['tipe'] = Tipe::all();
-        return view('tipe.create_tipe', $data);
+        return view('tipe.create_tipe');
     }
+
+    // public function create() {
+    //     $data['tipe'] = Tipe::all();
+    //     return view('tipe.create_tipe', $data);
+    // }
 
     public function save(Request $request) {
         $request->validate([

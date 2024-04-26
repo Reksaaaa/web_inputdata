@@ -8,25 +8,33 @@ use Illuminate\Validation\Rule;
 
 class RuanganController extends Controller
 {
-    public function index(Request $request)
-    {
-        $keyword = $request->input('keyword');
-
-        $query = Ruangan::query();
-
-        if ($keyword) {
-            $query->where('nama_ruangan', 'LIKE', "%$keyword%");
-        }
-
-        $data['ruangan'] = $query->paginate(5)->appends(['keyword' => $keyword]);
-
-        return view('ruangan.info_ruangan', $data);
+    public function index() {
+        return view('ruangan.info_ruangan');
     }
+
+    // public function index(Request $request)
+    // {
+    //     $keyword = $request->input('keyword');
+
+    //     $query = Ruangan::query();
+
+    //     if ($keyword) {
+    //         $query->where('nama_ruangan', 'LIKE', "%$keyword%");
+    //     }
+
+    //     $data['ruangan'] = $query->paginate(5)->appends(['keyword' => $keyword]);
+
+    //     return view('ruangan.info_ruangan', $data);
+    // }
 
     public function create() {
-        $data['ruangan'] = Ruangan::all();
-        return view('ruangan.create_ruangan', $data);
+        return view('ruangan.create_ruangan');
     }
+
+    // public function create() {
+    //     $data['ruangan'] = Ruangan::all();
+    //     return view('ruangan.create_ruangan', $data);
+    // }
 
     public function save(Request $request) {
         $request->validate([

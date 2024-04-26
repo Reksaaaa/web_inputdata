@@ -7,17 +7,18 @@
                 <h1 class="text-start mb-0">Input Data</h1>
             </div>
             <div class="card-body">
-                <form action="{{ route('cek.save') }}" method="POST" class="row g-3">
+                <form action="" method="POST" class="row g-3">
+                    {{-- {{ route('cek.save') }} --}}
                     @csrf
                     <!-- Nama Perangkat -->
                     <div class="col-md-6">
                         <label for="nama" class="form-label">Nama Perangkat</label>
                         <select name="nama" id="nama" class="form-select" required>
                             <option value="">--Pilih Perangkat--</option>
-                            @foreach ($barang as $data)
+                            {{-- @foreach ($barang as $data)
                                 <option value="{{ $data->kode_perangkat }}">{{ $data->kode_perangkat }} :
                                     {{ $data->nama_perangkat }}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                     </div>
                     <!-- Tipe Perangkat -->
@@ -25,9 +26,9 @@
                         <label for="tipe" class="form-label">Tipe Perangkat</label>
                         <select name="tipe" id="tipe" class="form-select" required>
                             <option value="">--Pilih Tipe--</option>
-                            @foreach ($tipe as $data)
+                            {{-- @foreach ($tipe as $data)
                                 <option value="{{ $data->id_tipe }}">{{ $data->nama_tipe }}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                     </div>
                     <!-- SSID -->
@@ -35,9 +36,9 @@
                         <label for="ssid" class="form-label">SSID</label>
                         <select name="ssid" id="ssid" class="form-select" required>
                             <option value="">--Pilih SSID--</option>
-                            @foreach ($ssid as $data)
+                            {{-- @foreach ($ssid as $data)
                                 <option value="{{ $data->id_ssid }}">{{ $data->nama_ssid }}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                     </div>
                     <!-- Ruangan -->
@@ -45,9 +46,9 @@
                         <label for="ruangan" class="form-label">Ruangan</label>
                         <select name="ruangan" id="ruangan" class="form-select" required>
                             <option value="">--Pilih Ruangan--</option>
-                            @foreach ($ruangan as $data)
+                            {{-- @foreach ($ruangan as $data)
                                 <option value="{{ $data->id_ruangan }}">{{ $data->nama_ruangan }}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                     </div>
                     <!-- Divisi -->
@@ -55,9 +56,9 @@
                         <label for="divisi" class="form-label">Divisi</label>
                         <select name="divisi" id="divisi" class="form-select" required>
                             <option value="">--Pilih Divisi--</option>
-                            @foreach ($divisi as $data)
+                            {{-- @foreach ($divisi as $data)
                                 <option value="{{ $data->id_divisi }}">{{ $data->nama_divisi }}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                     </div>
                     <!-- Status -->

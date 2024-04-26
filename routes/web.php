@@ -21,9 +21,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('login'); // Mengarahkan ke halaman login
-});
+// Route::get('/', function () {
+//     return redirect()->route('login'); // Mengarahkan ke halaman login
+// });
 
 Route::group(['middleware' => 'guest'], function() {
     Route::get('/register', [AuthController::class, 'register'])->name('register'); // Beri nama yang berbeda, misalnya 'register.form'
@@ -33,13 +33,6 @@ Route::group(['middleware' => 'guest'], function() {
 });
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/home', [CekController::class, 'home'])->name('home'); // Tetapkan nama rute 'home'
-    Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
-    // Rute untuk filter
-    Route::get('/filter', [CekController::class, 'filter'])->name('cek.filter');
-    
-    // Rute untuk ekspor
-    Route::get('/export', [CekController::class, 'export'])->name('cek.export');
 })->middleware('auth'); // Tambahkan middleware 'auth' di sini juga
 
 
@@ -51,6 +44,15 @@ Route::get('cek/{id}/edit', [CekController::class, 'edit'])->name('cek.edit');
 Route::put('cek/{id}', [CekController::class, 'ubah'])->name('cek.ubah');
 Route::delete('cek/{id}', [CekController::class, 'destroy'])->name('cek.destroy');
 //---------------------------------------
+
+// --------------------------------------
+Route::get('/home', [CekController::class, 'home'])->name('home'); // Tetapkan nama rute 'home'
+    Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+    // Rute untuk filter
+    Route::get('/filter', [CekController::class, 'filter'])->name('cek.filter');
+    
+    // Rute untuk ekspor
+    Route::get('/export', [CekController::class, 'export'])->name('cek.export');
 
 // Route untuk input barang
 Route::get('barang', [BarangController::class, 'index'])->name('barang.info_barang');

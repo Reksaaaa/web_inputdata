@@ -7,7 +7,8 @@
                 <h1 class="text-start mb-0">Input Divisi</h1>
             </div>
             <div class="card-body">
-                <form action="{{ route('divisi.save') }}" method="POST" class="row g-3">
+                <form action="" method="POST" class="row g-3">
+                    {{-- {{ route('divisi.save') }} --}}
                     @csrf
                     <!-- Nama Tipe -->
                     <div class="col-md-12">
@@ -15,9 +16,9 @@
                         <div class="input-group">
                             <input type="text" name="nama_divisi" class="form-control" id="upload" required>
                         </div>
-                        @error('nama_divisi')
+                        {{-- @error('nama_divisi')
                             <div class="text-danger">{{ $message }}</div>
-                        @enderror
+                        @enderror --}}
                     </div>
                     <!-- Tombol Simpan -->
                     <div class="col-md-12">

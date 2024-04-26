@@ -1,4 +1,4 @@
-        <aside id="sidebar">
+        {{-- <aside id="sidebar">
             <div class="d-flex">
                 <button class="toggle-btn" type="button">
                     <i class="bi bi-list"></i>
@@ -79,4 +79,4 @@
                     </form>
                 </a>
             </div>
-        </aside>
+        </aside> --}}

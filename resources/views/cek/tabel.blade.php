@@ -47,46 +47,48 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $realNumber = ($cek->currentPage() - 1) * $cek->perPage(); ?>
-                        @foreach ($cek as $data)
-                            <tr>
-                                <th>{{ $realNumber + $loop->iteration }}</th>
-                                <td>{{ $data->kode_perangkat }}</td>
-                                <td>{{ $data->nama_tipe }}</td>
-                                <td>{{ $data->nama_ssid }}</td>
-                                <td>{{ $data->nama_ruangan }}</td>
-                                <td>{{ $data->nama_divisi }}</td>
-                                <td>{{ $data->status }}</td>
-                                <td>{{ $data->upload }}</td>
-                                <td>{{ $data->download }}</td>
-                                <td>{{ $data->keterangan }}</td>
-                                <td>{{ $data->created_at->format('d-m-Y') }}</td>
-                                <td>
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        {{-- Edit --}}
-                                        <a href="{{ route('cek.edit', $data->id) }}" class="btn btn-primary">
-                                            <i class="bi bi-pencil-square"></i>
-                                        </a>
-                                        {{-- Spasi --}}
-                                        <div class="mx-1"></div>
-                                        {{-- Delete --}}
-                                        <form action="{{ route('cek.destroy', $data->id) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" value="Delete" class="btn btn-danger">
-                                                <i class="bi bi-trash-fill"></i>
-                                            </button>
-                                        </form>
-                                    </div>
-                                </td>
-                            </tr>
-                        @endforeach
+                        {{-- @foreach ($cek as $data) --}}
+                        <tr>
+                            <th></th>
+                            {{-- {{ $realNumber + $loop->iteration }} jangan di hapus --}}
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                    {{-- Edit --}}
+                                    {{-- {{ route('cek.edit', $data->id) }} --}}
+                                    <a href="" class="btn btn-primary">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+                                    {{-- Spasi --}}
+                                    <div class="mx-1"></div>
+                                    {{-- Delete --}}
+                                    {{-- {{ route('cek.destroy', $data->id) }} --}}
+                                    <form action="" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" value="Delete" class="btn btn-danger">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {{-- @endforeach --}}
                     </tbody>
                 </table>
             </div>
-            <div class="card-footer">
+            {{-- <div class="card-footer">
                 {{ $cek->links('pagination::bootstrap-4') }}
-            </div>
+            </div> --}}
         </div>
 
     </div>

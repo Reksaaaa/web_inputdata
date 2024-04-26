@@ -9,31 +9,38 @@ use Illuminate\Validation\Rule;
 
 class BarangController extends Controller
 {
-    public function index(Request $request) {
-        $keyword = $request->input('keyword');
-    
-        $query = Barang::query()->select('tb_barang.*', 'tb_tipe.nama_tipe')
-                    ->join('tb_tipe', 'tb_tipe.id_tipe', '=', 'tb_barang.id_tipe');
-    
-        if ($keyword) {
-            $query->where(function ($q) use ($keyword) {
-                $q->where('tb_barang.kode_perangkat', 'LIKE', "%$keyword%")
-                  ->orWhere('tb_barang.nama_perangkat', 'LIKE', "%$keyword%")
-                  ->orWhere('tb_tipe.nama_tipe', 'LIKE', "%$keyword%");
-            });
-        }
-    
-        $data['barang'] = $query->paginate(5)->appends(['keyword' => $keyword]);
-    
-        return view('barang.info_barang', $data);
+    public function index() {
+        return view('barang.info_barang');
     }
-    
 
+    // public function index(Request $request) {
+    //     $keyword = $request->input('keyword');
+    
+    //     $query = Barang::query()->select('tb_barang.*', 'tb_tipe.nama_tipe')
+    //                 ->join('tb_tipe', 'tb_tipe.id_tipe', '=', 'tb_barang.id_tipe');
+    
+    //     if ($keyword) {
+    //         $query->where(function ($q) use ($keyword) {
+    //             $q->where('tb_barang.kode_perangkat', 'LIKE', "%$keyword%")
+    //               ->orWhere('tb_barang.nama_perangkat', 'LIKE', "%$keyword%")
+    //               ->orWhere('tb_tipe.nama_tipe', 'LIKE', "%$keyword%");
+    //         });
+    //     }
+    
+    //     $data['barang'] = $query->paginate(5)->appends(['keyword' => $keyword]);
+    
+    //     return view('barang.info_barang', $data);
+    // }
+    
     public function create() {
-        $data['barang'] = Barang::all();
-        $data['tipe'] = Tipe::all();
-        return view('barang.create_barang', $data);
+        return view('barang.create_barang');
     }
+
+    // public function create() {
+    //     $data['barang'] = Barang::all();
+    //     $data['tipe'] = Tipe::all();
+    //     return view('barang.create_barang', $data);
+    // }
 
     public function save(Request $request) {
         $request->validate([
