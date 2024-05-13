@@ -7,8 +7,7 @@
                 <h4><b>Data Divisi</b></h4>
             </div>
             {{-- Search --}}
-            <form action="" method="GET" class="d-flex align-items-center" role="search">
-                {{-- {{ route('divisi.info_divisi') }} --}}
+            <form action="{{ route('divisi.info_divisi') }}" method="GET" class="d-flex align-items-center" role="search">
                 <div class="col-md-6">
                     <input class="form-control me-5" type="search" name="keyword" placeholder="Cari Divisi...."
                         aria-label="Search">
@@ -34,40 +33,38 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        {{-- @foreach ($divisi as $data) --}}
-                        <tr>
-                            <th></th>
-                            {{-- {{ $realNumber + $loop->iteration }} --}}
-                            <td></td>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    {{-- Edit --}}
-                                    <a href="" class="btn btn-primary">
-                                        {{-- {{ route('divisi.edit_divisi', $data->id_divisi) }} --}}
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                    {{-- Spasi --}}
-                                    <div class="mx-1"></div>
-                                    {{-- Delete --}}
-                                    <form action="" method="POST">
-                                        {{-- {{ route('divisi.destroy', $data->id_divisi) }} --}}
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" value="Delete" class="btn btn-danger">
-                                            <i class="bi bi-trash-fill"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        {{-- @endforeach --}}
+                        <?php $realNumber = ($divisi->currentPage() - 1) * $divisi->perPage(); ?>
+                        @foreach ($divisi as $data)
+                            <tr>
+                                <th>{{ $realNumber + $loop->iteration }}</th>
+                                <td>{{ $data->nama_divisi }}</td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        {{-- Edit --}}
+                                        <a href="{{ route('divisi.edit_divisi', $data->id_divisi) }}"
+                                            class="btn btn-primary">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                        {{-- Spasi --}}
+                                        <div class="mx-1"></div>
+                                        {{-- Delete --}}
+                                        <form action="{{ route('divisi.destroy', $data->id_divisi) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" value="Delete" class="btn btn-danger">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
-            {{-- <div class="card-footer">
+            <div class="card-footer">
                 {{ $divisi->links('pagination::bootstrap-4') }}
-            </div> --}}
+            </div>
         </div>
 
     </div>

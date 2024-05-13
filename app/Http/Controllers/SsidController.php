@@ -8,32 +8,25 @@ use Illuminate\Validation\Rule;
 
 class SsidController extends Controller
 {
-    public function index() {
-        return view('ssid.info_ssid');
+    public function index(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        $query = Ssid::query();
+
+        if ($keyword) {
+            $query->where('nama_ssid', 'LIKE', "%$keyword%");
+        }
+
+        $data['ssid'] = $query->paginate(5)->appends(['keyword' => $keyword]);
+
+        return view('ssid.info_ssid', $data);
     }
-    // public function index(Request $request)
-    // {
-    //     $keyword = $request->input('keyword');
-
-    //     $query = Ssid::query();
-
-    //     if ($keyword) {
-    //         $query->where('nama_ssid', 'LIKE', "%$keyword%");
-    //     }
-
-    //     $data['ssid'] = $query->paginate(5)->appends(['keyword' => $keyword]);
-
-    //     return view('ssid.info_ssid', $data);
-    // }
 
     public function create() {
-        return view('ssid.create_ssid');
+        $data['ssid'] = Ssid::all();
+        return view('ssid.create_ssid', $data);
     }
-
-    // public function create() {
-    //     $data['ssid'] = Ssid::all();
-    //     return view('ssid.create_ssid', $data);
-    // }
 
     public function save(Request $request) {
         $request->validate([

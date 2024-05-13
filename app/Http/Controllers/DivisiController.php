@@ -8,32 +8,25 @@ use Illuminate\Validation\Rule;
 
 class DivisiController extends Controller
 {
-    public function index() {
-        return view('divisi.info_divisi');
+    public function index(Request $request)
+    {
+        $keyword = $request->input('keyword');
+
+        $query = Divisi::query();
+
+        if ($keyword) {
+            $query->where('nama_divisi', 'LIKE', "%$keyword%");
+        }
+
+        $data['divisi'] = $query->paginate(5)->appends(['keyword' => $keyword]);
+
+        return view('divisi.info_divisi', $data);
     }
-    // public function index(Request $request)
-    // {
-    //     $keyword = $request->input('keyword');
-
-    //     $query = Divisi::query();
-
-    //     if ($keyword) {
-    //         $query->where('nama_divisi', 'LIKE', "%$keyword%");
-    //     }
-
-    //     $data['divisi'] = $query->paginate(5)->appends(['keyword' => $keyword]);
-
-    //     return view('divisi.info_divisi', $data);
-    // }
 
     public function create() {
-        return view('divisi.create_divisi');
+        $data['divisi'] = Divisi::all();
+        return view('divisi.create_divisi', $data);
     }
-
-    // public function create() {
-    //     $data['divisi'] = Divisi::all();
-    //     return view('divisi.create_divisi', $data);
-    // }
 
     public function save(Request $request) {
         $request->validate([

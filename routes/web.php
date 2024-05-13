@@ -21,9 +21,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return redirect()->route('login'); // Mengarahkan ke halaman login
-// });
+Route::get('/', function () {
+    return redirect()->route('login'); // Mengarahkan ke halaman login
+});
 
 Route::group(['middleware' => 'guest'], function() {
     Route::get('/register', [AuthController::class, 'register'])->name('register'); // Beri nama yang berbeda, misalnya 'register.form'

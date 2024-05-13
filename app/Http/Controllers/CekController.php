@@ -21,24 +21,16 @@ class CekController extends Controller
     }
 
     public function tabel() {
-        return view('cek.tabel');
-    }
-
-
-
-    // public function tabel() {
-    //     $data['cek'] = Cek::join('tb_barang', 'tb_barang.kode_perangkat', '=', 'cek.kode_perangkat')
-    //                         ->join('tb_tipe', 'tb_tipe.id_tipe', '=', 'cek.id_tipe')
-    //                         ->join('tb_ssid', 'tb_ssid.id_ssid', '=', 'cek.id_ssid')
-    //                         ->join('tb_ruangan', 'tb_ruangan.id_ruangan', '=', 'cek.id_ruangan')
-    //                         ->join('tb_divisi', 'tb_divisi.id_divisi', '=', 'cek.id_divisi')
-    //                         ->select('cek.*', 'tb_barang.kode_perangkat', 'tb_tipe.nama_tipe', 'tb_ssid.nama_ssid', 'tb_ruangan.nama_ruangan', 'tb_divisi.nama_divisi')
-    //                         ->paginate(10);
+        $data['cek'] = Cek::join('tb_barang', 'tb_barang.kode_perangkat', '=', 'cek.kode_perangkat')
+                            ->join('tb_tipe', 'tb_tipe.id_tipe', '=', 'cek.id_tipe')
+                            ->join('tb_ssid', 'tb_ssid.id_ssid', '=', 'cek.id_ssid')
+                            ->join('tb_ruangan', 'tb_ruangan.id_ruangan', '=', 'cek.id_ruangan')
+                            ->join('tb_divisi', 'tb_divisi.id_divisi', '=', 'cek.id_divisi')
+                            ->select('cek.*', 'tb_barang.kode_perangkat', 'tb_tipe.nama_tipe', 'tb_ssid.nama_ssid', 'tb_ruangan.nama_ruangan', 'tb_divisi.nama_divisi')
+                            ->paginate(10);
         
-    //     return view('cek.tabel', $data);
-    // }
-
-
+        return view('cek.tabel', $data);
+    }
 
     public function filter(Request $request) {
         $start_date = $request->input('start_date');
@@ -106,20 +98,15 @@ class CekController extends Controller
     
         return Excel::download(new CekExport($data['cek']), $filename);
     }
-    
-    
-    public function create() {
-        return view('cek.create');
-    }
 
-    // public function create() {
-    //     $data['barang'] = Barang::all();
-    //     $data['tipe'] = Tipe::all();
-    //     $data['ssid'] = Ssid::all();
-    //     $data['ruangan'] = Ruangan::all();
-    //     $data['divisi'] = Divisi::all();
-    //     return view('cek.create', $data);
-    // }
+    public function create() {
+        $data['barang'] = Barang::all();
+        $data['tipe'] = Tipe::all();
+        $data['ssid'] = Ssid::all();
+        $data['ruangan'] = Ruangan::all();
+        $data['divisi'] = Divisi::all();
+        return view('cek.create', $data);
+    }
 
     public function save(Request $request) {
         $nama = $request->nama;

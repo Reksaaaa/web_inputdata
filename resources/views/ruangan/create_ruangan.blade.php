@@ -7,22 +7,21 @@
                 <h1 class="text-start mb-0">Input Ruangan</h1>
             </div>
             <div class="card-body">
-                <form action="" method="POST" class="row g-3">
-                    {{-- {{ route('ruangan.save') }} --}}
+                <form action="{{ route('ruangan.save') }}" method="POST" class="row g-3">
                     @csrf
                     <!-- Nama Tipe -->
                     <div class="col-md-12">
                         <label for="upload" class="form-label">Nama Ruangan</label>
                         <div class="input-group">
-                            <input type="text" name="nama_ruangan" class="form-control" id="upload" required>
+                            <input type="text" name="nama_ruangan" class="form-control" id="upload" required />
                         </div>
-                        {{-- @error('nama_ruangan')
+                        @error('nama_ruangan')
                             <div class="text-danger">{{ $message }}</div>
-                        @enderror --}}
+                        @enderror
                     </div>
                     <!-- Tombol Simpan -->
                     <div class="col-md-12">
-                        <div class="d-grid gap-2 d-md-block text-start ">
+                        <div class="d-grid gap-2 d-md-block text-start">
                             <button class="btn btn-primary btn-md text-start" type="submit" name="submit"
                                 value="Save">Simpan</button>
                         </div>

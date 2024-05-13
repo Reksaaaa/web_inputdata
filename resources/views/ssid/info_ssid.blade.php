@@ -7,8 +7,7 @@
                 <h4><b>Data SSID</b></h4>
             </div>
             {{-- Search --}}
-            <form action="" method="GET" class="d-flex align-items-center" role="search">
-                {{-- {{ route('ssid.info_ssid') }} --}}
+            <form action="{{ route('ssid.info_ssid') }}" method="GET" class="d-flex align-items-center" role="search">
                 <div class="col-md-6">
                     <input class="form-control me-5" type="search" name="keyword" placeholder="Cari SSID...."
                         aria-label="Search">
@@ -34,40 +33,37 @@
                         </tr>
                     </thead>
                     <tbody>
-
-                        {{-- @foreach ($ssid as $data) --}}
-                        <tr>
-                            <th></th>
-                            {{-- {{ $realNumber + $loop->iteration }} --}}
-                            <td></td>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                    {{-- Edit --}}
-                                    <a href="" class="btn btn-primary">
-                                        {{-- {{ route('ssid.edit_ssid', $data->id_ssid) }} --}}
-                                        <i class="bi bi-pencil-square"></i>
-                                    </a>
-                                    {{-- Spasi --}}
-                                    <div class="mx-1"></div>
-                                    {{-- Delete --}}
-                                    <form action="" method="POST">
-                                        {{-- {{ route('ssid.destroy', $data->id_ssid) }} --}}
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" value="Delete" class="btn btn-danger">
-                                            <i class="bi bi-trash-fill"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        {{-- @endforeach --}}
+                        <?php $realNumber = ($ssid->currentPage() - 1) * $ssid->perPage(); ?>
+                        @foreach ($ssid as $data)
+                            <tr>
+                                <th>{{ $realNumber + $loop->iteration }}</th>
+                                <td>{{ $data->nama_ssid }}</td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        {{-- Edit --}}
+                                        <a href="{{ route('ssid.edit_ssid', $data->id_ssid) }}" class="btn btn-primary">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </a>
+                                        {{-- Spasi --}}
+                                        <div class="mx-1"></div>
+                                        {{-- Delete --}}
+                                        <form action="{{ route('ssid.destroy', $data->id_ssid) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" value="Delete" class="btn btn-danger">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
-            {{-- <div class="card-footer">
+            <div class="card-footer">
                 {{ $ssid->links('pagination::bootstrap-4') }}
-            </div> --}}
+            </div>
         </div>
 
     </div>
