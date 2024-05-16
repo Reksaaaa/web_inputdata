@@ -12,7 +12,7 @@
 
     {{-- Bootrtrap --}}
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/bootstrap-icons/css/bootstrap-icons.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/boxicons/css/boxicons.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/quill/quill.snow.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/quill/quill.bubble.css') }}">
@@ -41,9 +41,9 @@
 
 {{-- Vendor JS Files --}}
 <script src="{{ asset('vendor/apexcharts/apexcharts.min.js') }}"></script>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap/bundle.min.js') }}"></script>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('vendor/chart.js/chart.umd.js') }}"></script>
-<script src="{{ asset('vendor/echarts.js/echarts.min.js') }}"></script>
+<script src="{{ asset('vendor/echarts/echarts.min.js') }}"></script>
 <script src="{{ asset('vendor/quill/quill.min.js') }}"></script>
 <script src="{{ asset('vendor/simple-datatables/simple-datatables.js') }}"></script>
 <script src="{{ asset('vendor/tinymce/tinymce.min.js') }}"></script>

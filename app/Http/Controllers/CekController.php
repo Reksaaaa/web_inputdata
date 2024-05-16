@@ -16,8 +16,17 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class CekController extends Controller
 {
-    public function home() {
-        return view('home');
+    public function dashboard() {
+        $excludedSsidIds = [1];
+        $excludedDivisiIds = [1];
+
+        $totalBarang = Barang::count();
+        $totalTipe = Tipe::count();
+        $totalSsid = Ssid::whereNotIn('id_ssid', $excludedSsidIds)->count();
+        $totalRuangan = Ruangan::count();
+        $totalDivisi = Divisi::whereNotIn('id_divisi', $excludedDivisiIds)->count();
+
+        return view('dashboard', compact('totalBarang', 'totalTipe', 'totalSsid', 'totalRuangan', 'totalDivisi'));
     }
 
     public function tabel() {

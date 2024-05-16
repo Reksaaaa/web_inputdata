@@ -46,7 +46,7 @@ Route::delete('cek/{id}', [CekController::class, 'destroy'])->name('cek.destroy'
 //---------------------------------------
 
 // --------------------------------------
-Route::get('/home', [CekController::class, 'home'])->name('home'); // Tetapkan nama rute 'home'
+Route::get('/dashboard', [CekController::class, 'dashboard'])->name('dashboard'); // Tetapkan nama rute 'dashboard'
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
     // Rute untuk filter
     Route::get('/filter', [CekController::class, 'filter'])->name('cek.filter');

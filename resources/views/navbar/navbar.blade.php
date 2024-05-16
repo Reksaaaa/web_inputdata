@@ -1,17 +1,17 @@
 <aside id="sidebar">
     <div class="d-flex">
         <button class="toggle-btn" type="button">
-            <i class="bi bi-list-ul"></i>
+            <i class="bi bi-list"></i>
         </button>
         <div class="sidebar-logo">
-            <a href="/home">Seamolec</a>
+            <a href="/dashboard">Seamolec</a>
         </div>
     </div>
     <ul class="sidebar-nav">
         <li class="sidebar-item">
-            <a href="/home" class="sidebar-link">
+            <a href="/dashboard" class="sidebar-link">
                 <i class="bi bi-house-door-fill"></i>
-                <span>Home</span>
+                <span>Dashboard</span>
             </a>
         </li>
         <li class="sidebar-item">
